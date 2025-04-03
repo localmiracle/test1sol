@@ -1,0 +1,27 @@
+specVersion: 0.0.2
+description: Subgraph
+repository: https://github.com/your-repo/simplebank-subgraph
+
+schema:
+  file: ./schema.graphql
+
+dataSources:
+  - kind: ethereum/contract
+    name: SimpleBank
+    network: localhost
+    source:
+      address: "0xYourDeployedContractAddress"
+      abi: SimpleBank
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - DepositEntity
+      abis:
+        - name: SimpleBank
+          file: ./abis/SimpleBank.json
+      eventHandlers:
+        - event: Deposit(address,uint256)
+          handler: handleDeposit
+      file: ./src/mapping.ts

@@ -1,0 +1,6 @@
+type DepositEntity @entity {
+  id: ID!
+  depositor: Bytes!
+  totalDeposited: BigInt!
+  lastDepositTimestamp: BigInt!
+}

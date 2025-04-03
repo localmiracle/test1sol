@@ -1,0 +1,20 @@
+version: '3'
+services:
+  ipfs:
+    image: ipfs/go-ipfs:v0.4.23
+    ports:
+      - "5001:5001"
+      - "8080:8080"
+  graph-node:
+    image: graphprotocol/graph-node:latest
+    ports:
+      - "8020:8020"
+      - "8000:8000"
+    depends_on:
+      - ipfs
+    environment:
+      ethereum: 'localhost:8545'
+      postgres_host: host.docker.internal
+      postgres_user: graph
+      postgres_pass: let-me-in
+      postgres_db: graph-node
