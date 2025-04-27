@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 description: Subgraph
-repository: https://github.com/your-repo/simplebank-subgraph
+repository: https://github.com/localmiracle/test1sol
 
 schema:
   file: ./schema.graphql
